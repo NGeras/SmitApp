@@ -21,7 +21,6 @@
                             AutomationProperties.Name="Detail icon" />
                         <TextBlock
                             Margin="{StaticResource SmallLeftMargin}"
-                            VerticalAlignment="Center"
                             Text="{Binding Company, Mode=OneWay}"
                             Style="{StaticResource PageTitleStyle}" />
                     </StackPanel>

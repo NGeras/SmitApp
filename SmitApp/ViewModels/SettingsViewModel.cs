@@ -11,7 +11,6 @@ using SmitApp.Models;
 
 namespace SmitApp.ViewModels;
 
-// TODO: Change the URL for your privacy policy in the appsettings.json file, currently set to https://YourPrivacyUrlGoesHere
 public class SettingsViewModel : ObservableObject, INavigationAware
 {
     private readonly AppConfig _appConfig;

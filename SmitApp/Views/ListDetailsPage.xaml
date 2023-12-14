@@ -6,8 +6,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:properties="clr-namespace:SmitApp.Properties"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
     mc:Ignorable="d"
-    d:DesignHeight="450" d:DesignWidth="800">
+    d:DesignHeight="450" d:DesignWidth="800" Loaded="ListDetailsPage_OnLoaded">
     <Page.Resources>
         <DataTemplate x:Key="ItemTemplate">
             <Grid Height="60">
@@ -33,24 +34,58 @@
     </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="180" MaxWidth="300" Width="*" />
+            <ColumnDefinition MinWidth="180" MaxWidth="230" Width="*" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
-        <Grid>
+        <Grid Background="LightGray" Margin="10">
+            <Expander Header="Filters">
+                <ItemsControl ItemsSource="{Binding FilterList}">
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.Margin" Value="3" />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ToggleButton Style="{DynamicResource MahApps.Styles.ToggleButton}" FontSize="13"
+                                          Content="{Binding Name}" IsChecked="{Binding IsChecked}"
+                                          Click="CheckBox_Click" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Expander>
+        </Grid>
+        <Grid Grid.Column="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="48" />
                 <RowDefinition Height="48" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBlock
                 Style="{StaticResource PageTitleStyle}"
-                Margin="{StaticResource MediumLeftMargin}"
                 Text="{x:Static properties:Resources.ListDetailsPageTitle}" />
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox Name="MovieSearch"
+                         TextChanged="MovieFilter_OnTextChanged"
+                         Margin="5" FontSize="20" />
+                <mah:FontIcon Grid.Column="1" Margin="5" FontFamily="Segoe MDL2 Assets" Glyph="&#xE721;" />
+            </Grid>
             <ListView
-                Grid.Row="1"
+                x:Name="MovieListView"
+                Grid.Row="2"
                 AutomationProperties.Name="{x:Static properties:Resources.ListDetailsListDescription}"
                 ItemsSource="{Binding SampleItems}"
                 ItemTemplate="{StaticResource ItemTemplate}"
-                SelectedItem="{Binding Selected, Mode=TwoWay}"/>
+                SelectedItem="{Binding Selected, Mode=TwoWay}" />
         </Grid>
     </Grid>
 </Page>
