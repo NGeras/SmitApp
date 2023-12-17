@@ -7,8 +7,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:properties="clr-namespace:SmitApp.Properties"
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:viewModels="clr-namespace:SmitApp.ViewModels"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     mc:Ignorable="d"
-    d:DesignHeight="450" d:DesignWidth="800" Loaded="ListDetailsPage_OnLoaded">
+    d:DataContext="{d:DesignInstance viewModels:ListDetailsViewModel}"
+    d:DesignHeight="450" d:DesignWidth="800">
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <b:InvokeCommandAction Command="{Binding SetFilterCommand}">
+            </b:InvokeCommandAction>
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
     <Page.Resources>
         <DataTemplate x:Key="ItemTemplate">
             <Grid Height="60">
@@ -53,8 +62,8 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <ToggleButton Style="{DynamicResource MahApps.Styles.ToggleButton}" FontSize="13"
-                                          Content="{Binding Name}" IsChecked="{Binding IsChecked}"
-                                          Click="CheckBox_Click" />
+                                          Command="{Binding Path=DataContext.RefreshCollectionCommand, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Page}}"
+                                          Content="{Binding Name}" IsChecked="{Binding IsChecked}"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -74,8 +83,8 @@
                     <ColumnDefinition Width="250" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <TextBox Name="MovieSearch"
-                         TextChanged="MovieFilter_OnTextChanged"
+                <TextBox
+                         Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
                          Margin="5" FontSize="20" />
                 <mah:FontIcon Grid.Column="1" Margin="5" FontFamily="Segoe MDL2 Assets" Glyph="&#xE721;" />
             </Grid>
