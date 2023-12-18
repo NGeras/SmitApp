@@ -1,3 +1,4 @@
+
 ﻿# Movie Database Application
 
 This is a movie database application that includes a front-end built with WPF using the MVVM pattern and a back-end implemented as a Windows service. Communication between the front-end and back-end is achieved through RabbitMQ.
@@ -42,16 +43,15 @@ The project is structured into front-end and back-end components:
 1. Build the solution using Visual Studio or your preferred IDE.
 2. Ensure RabbitMQ is installed and running.
 3. Start the back-end Windows service.
-For **.NET Framework** service:
+* For **.NET Framework** service:
 	1. Open Developer Command Prompt for Visual Studio with administrative credentials.
 	2. In Developer Command Prompt for Visual Studio, navigate to the folder that contains your project's output.
 	3. Enter the following command
 	```
 	installutil SmitApp.Backend.exe
 	```
-	4. Start "Smit Service" service from Services app in Windows
-	
-For **.NET 6** Worker service:
+	4. Start "Smit Service" service from Services app in Windows	
+* For **.NET 6** Worker service:
 	1. Publish the app using
 	```
 	dotnet publish --output "C:\custom\publish\directory"
