@@ -4,10 +4,9 @@ This is a movie database application that includes a front-end built with WPF us
 
 ## Technologies Used
 
-- C#.NET 6
-- WPF (Windows Presentation Foundation)
+- WPF (.NET 6)
 - RabbitMQ
-- Windows Service
+- Windows Service (.NET Framework 4.8)
 
 ## Project Structure
 
@@ -17,16 +16,21 @@ The project is structured into front-end and back-end components:
 
 - **Views:** Includes XAML files for the list of movies and movie details.
 - **ViewModels:** Implements MVVM pattern with view models for movies list and movie details.
-- **Models:** Defines data models for movies and categories.
+### Core (.NET Standard2.0)
+
+- **MovieService.cs:** Business logic service for retrieving movie data.
+- **MoviesRepository.cs:** Repository class for accessing movie data (e.g., from a database, hardcoded right now).
+- **CategoryService.cs:** Business logic service for retrieving category data.
+- **CategoryRepository.cs:** Repository class for accessing category data (e.g., from a database, hardcoded right now).
+
+### Models (.NET Standard2.0)
+
+- **Models:** Defines data models for movies and categories for front-end and back-end.
 
 ### Back-end (Windows Service)
 
 - **Program.cs:** Entry point for the Windows service.
-- **MovieServiceHostedService.cs:** Background service responsible for handling RabbitMQ message consumers.
-- **MovieListConsumer.cs:** RabbitMQ consumer for handling movie list requests.
-- **MovieDetailsConsumer.cs:** RabbitMQ consumer for handling movie details requests.
-- **MovieService.cs:** Business logic service for retrieving movie data.
-- **MoviesRepository.cs:** Repository class for accessing movie data (e.g., from a database).
+- **SmitService.cs:** Background service responsible for handling RabbitMQ message consumers using MovieService and CategoryService.
 
 ## How to Run
 
@@ -44,10 +48,6 @@ The project is structured into front-end and back-end components:
 The project includes unit tests for the `MovieService` methods. These tests use the MSTest framework and Moq for mocking.
 
 To run the tests, use your preferred test runner.
-
-## Contributing
-
-If you'd like to contribute to the project, please follow the standard GitHub flow: Fork the repository, create a branch, make changes, and submit a pull request.
 
 ## License
 
