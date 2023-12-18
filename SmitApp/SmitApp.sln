@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmitApp.Models", "..\SmitAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmitApp.Backend", "..\SmitApp.Backend\SmitApp.Backend.csproj", "{2E527080-1D9C-4CDA-BFA9-AF3E51BB34D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmitApp.BackendWorker", "..\SmitApp.BackendWorker\SmitApp.BackendWorker.csproj", "{4F65A7DF-3CF5-4D20-A335-3338909B5E29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +161,26 @@ Global
 		{2E527080-1D9C-4CDA-BFA9-AF3E51BB34D4}.Release|x64.Build.0 = Release|Any CPU
 		{2E527080-1D9C-4CDA-BFA9-AF3E51BB34D4}.Release|x86.ActiveCfg = Release|Any CPU
 		{2E527080-1D9C-4CDA-BFA9-AF3E51BB34D4}.Release|x86.Build.0 = Release|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Debug|ARM.Build.0 = Debug|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Debug|x64.Build.0 = Debug|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Debug|x86.Build.0 = Debug|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Release|ARM.ActiveCfg = Release|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Release|ARM.Build.0 = Release|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Release|ARM64.Build.0 = Release|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Release|x64.ActiveCfg = Release|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Release|x64.Build.0 = Release|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Release|x86.ActiveCfg = Release|Any CPU
+		{4F65A7DF-3CF5-4D20-A335-3338909B5E29}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

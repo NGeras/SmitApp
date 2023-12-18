@@ -5,7 +5,7 @@ using System.Text;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using SmitApp.Backend.Movie;
+using SmitApp.Core.MovieDtos;
 using SmitApp.Core.Repositories;
 using SmitApp.Core.Services;
 

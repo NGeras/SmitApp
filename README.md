@@ -6,7 +6,7 @@ This is a movie database application that includes a front-end built with WPF us
 
 - WPF (.NET 6)
 - RabbitMQ
-- Windows Service (.NET Framework 4.8)
+- Windows Service (.NET Framework 4.8) or Worker Service (.NET 6)
 
 ## Project Structure
 
@@ -32,11 +32,36 @@ The project is structured into front-end and back-end components:
 - **Program.cs:** Entry point for the Windows service.
 - **SmitService.cs:** Background service responsible for handling RabbitMQ message consumers using MovieService and CategoryService.
 
+### Back-end (Worker Service)
+
+- **Program.cs:** Entry point for the Windows service.
+- **Worker.cs:** Background service responsible for handling RabbitMQ message consumers using MovieService and CategoryService.
+
 ## How to Run
 
 1. Build the solution using Visual Studio or your preferred IDE.
 2. Ensure RabbitMQ is installed and running.
 3. Start the back-end Windows service.
+For **.NET Framework** service:
+	1. Open Developer Command Prompt for Visual Studio with administrative credentials.
+	2. In Developer Command Prompt for Visual Studio, navigate to the folder that contains your project's output.
+	3. Enter the following command
+	```
+	installutil SmitApp.Backend.exe
+	```
+	4. Start "Smit Service" service from Services app in Windows
+	
+For **.NET 6** Worker service:
+	1. Publish the app using
+	```
+	dotnet publish --output "C:\custom\publish\directory"
+	```
+	2. Create the Windows Service with PowerShell
+	```
+	sc.exe create "Smit Service" binpath="C:\Path\To\SmitApp.BackendWorker.exe"
+	```
+	3. Start "Smit Service" service from Services app in Windows
+	
 4. Run the WPF application for the front-end.
 
 ## Configuration
