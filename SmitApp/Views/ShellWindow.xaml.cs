@@ -1,7 +1,5 @@
 ﻿using System.Windows.Controls;
-
 using MahApps.Metro.Controls;
-
 using SmitApp.Contracts.Views;
 using SmitApp.ViewModels;
 
@@ -16,11 +14,17 @@ public partial class ShellWindow : MetroWindow, IShellWindow
     }
 
     public Frame GetNavigationFrame()
-        => shellFrame;
+    {
+        return shellFrame;
+    }
 
     public void ShowWindow()
-        => Show();
+    {
+        Show();
+    }
 
     public void CloseWindow()
-        => Close();
+    {
+        Close();
+    }
 }

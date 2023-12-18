@@ -5,5 +5,5 @@ namespace SmitApp.Core.Contracts.Repositories;
 public interface IMovieRepository
 {
     IEnumerable<Movie> GetMovies();
-    string GetMovieDetailsById(int id);
+    Movie GetMovieDetailsById(int id);
 }

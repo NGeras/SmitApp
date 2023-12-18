@@ -6,7 +6,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:properties="clr-namespace:SmitApp.Properties"
-    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:viewModels="clr-namespace:SmitApp.ViewModels"
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     mc:Ignorable="d"
@@ -14,20 +13,19 @@
     d:DesignHeight="450" d:DesignWidth="800">
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="Loaded">
-            <b:InvokeCommandAction Command="{Binding SetFilterCommand}">
-            </b:InvokeCommandAction>
+            <b:InvokeCommandAction Command="{Binding SetFilterCommand}" />
         </b:EventTrigger>
     </b:Interaction.Triggers>
     <Page.Resources>
-        <DataTemplate x:Key="ItemTemplate">
-            <Grid Height="60">
+        <DataTemplate x:Key="ItemTemplate" DataType="{x:Type viewModels:MovieViewModel}">
+            <Grid Height="80">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock
                     Grid.Column="0"
-                    Text="{Binding Symbol}"
+                    Text="&#xE8B2;"
                     Style="{StaticResource MediumIconStyle}"
                     Margin="{StaticResource XSmallLeftMargin}"
                     AutomationProperties.Name="List item icon" />
@@ -35,8 +33,14 @@
                     Grid.Column="1"
                     Margin="{StaticResource SmallLeftMargin}"
                     VerticalAlignment="Center">
-                    <TextBlock Style="{StaticResource ListTitleStyle}" Text="{Binding Company}" />
-                    <TextBlock Style="{StaticResource ListSubTitleStyle}" Text="{Binding Status}" />
+                    <TextBlock Style="{StaticResource ListTitleStyle}" Text="{Binding Title}" />
+                    <TextBlock Style="{StaticResource ListSubTitleStyle}" Text="{Binding CategoryName}" />
+                    <TextBlock Style="{StaticResource ListSubSubTitleStyle}" Text="{Binding Year}" />
+                    <TextBlock Style="{StaticResource ListSubSubTitleStyle}">
+                        <Run Text="{Binding Rating, Mode=OneWay}" />
+                        <Run Text="/10" />
+                        <Run FontFamily="Segoe MDL2 Assets" Text="&#xE006;" />
+                    </TextBlock>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -48,25 +52,31 @@
         </Grid.ColumnDefinitions>
         <Grid Background="LightGray" Margin="10">
             <Expander Header="Filters">
-                <ItemsControl ItemsSource="{Binding FilterList}">
-                    <ItemsControl.ItemContainerStyle>
-                        <Style>
-                            <Setter Property="FrameworkElement.Margin" Value="3" />
-                        </Style>
-                    </ItemsControl.ItemContainerStyle>
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <ToggleButton Style="{DynamicResource MahApps.Styles.ToggleButton}" FontSize="13"
-                                          Command="{Binding Path=DataContext.RefreshCollectionCommand, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Page}}"
-                                          Content="{Binding Name}" IsChecked="{Binding IsChecked}"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                <StackPanel Orientation="Vertical">
+                    <ItemsControl ItemsSource="{Binding FilterList}">
+                        <ItemsControl.ItemContainerStyle>
+                            <Style>
+                                <Setter Property="FrameworkElement.Margin" Value="3" />
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <ToggleButton Style="{DynamicResource MahApps.Styles.ToggleButton}" FontSize="13"
+                                              Command="{Binding Path=DataContext.RefreshCollectionCommand, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Page}}"
+                                              Content="{Binding Name}" IsChecked="{Binding IsChecked}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <Button Style="{DynamicResource MahApps.Styles.Button.Square.Accent}"
+                            Content="Clear filter"
+                            Command="{Binding ClearFiltersCommand}"
+                            FontSize="13" />
+                </StackPanel>
             </Expander>
         </Grid>
         <Grid Grid.Column="1">
@@ -84,15 +94,16 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBox
-                         Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
-                         Margin="5" FontSize="20" />
-                <mah:FontIcon Grid.Column="1" Margin="5" FontFamily="Segoe MDL2 Assets" Glyph="&#xE721;" />
+                    Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                    Margin="5" FontSize="20" />
+                <TextBlock Grid.Column="1" Margin="5" VerticalAlignment="Center" FontSize="20"
+                           FontFamily="Segoe MDL2 Assets" Text="&#xE721;" />
             </Grid>
             <ListView
                 x:Name="MovieListView"
                 Grid.Row="2"
                 AutomationProperties.Name="{x:Static properties:Resources.ListDetailsListDescription}"
-                ItemsSource="{Binding SampleItems}"
+                ItemsSource="{Binding MovieItems}"
                 ItemTemplate="{StaticResource ItemTemplate}"
                 SelectedItem="{Binding Selected, Mode=TwoWay}" />
         </Grid>

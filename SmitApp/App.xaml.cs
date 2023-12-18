@@ -7,8 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SmitApp.Contracts.Services;
 using SmitApp.Contracts.Views;
-using SmitApp.Core.Contracts.Services;
-using SmitApp.Core.Services;
 using SmitApp.Models;
 using SmitApp.Services;
 using SmitApp.ViewModels;
@@ -59,7 +57,7 @@ public partial class App : Application
         services.AddSingleton<ISystemService, SystemService>();
         services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
         services.AddSingleton<IPersistAndRestoreService, PersistAndRestoreService>();
-        services.AddSingleton<ISampleDataService, SampleDataService>();
+        services.AddSingleton<IMovieService, MovieService>();
         services.AddSingleton<IPageService, PageService>();
         services.AddSingleton<INavigationService, NavigationService>();
 
@@ -88,6 +86,5 @@ public partial class App : Application
 
     private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
     {
-        // TODO: Log and handle the exception
     }
 }

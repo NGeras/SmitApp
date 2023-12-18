@@ -4,7 +4,6 @@ using System.IO;
 using Microsoft.Extensions.Options;
 
 using SmitApp.Contracts.Services;
-using SmitApp.Core.Contracts.Services;
 using SmitApp.Models;
 
 namespace SmitApp.Services;

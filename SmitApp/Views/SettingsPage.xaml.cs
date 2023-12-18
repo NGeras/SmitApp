@@ -1,5 +1,4 @@
 ﻿using System.Windows.Controls;
-
 using SmitApp.ViewModels;
 
 namespace SmitApp.Views;

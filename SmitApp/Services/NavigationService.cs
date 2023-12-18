@@ -1,8 +1,8 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Navigation;
-
 using SmitApp.Contracts.Services;
 using SmitApp.Contracts.ViewModels;
+using SmitApp.Helpers;
 
 namespace SmitApp.Services;
 
@@ -12,14 +12,14 @@ public class NavigationService : INavigationService
     private Frame _frame;
     private object _lastParameterUsed;
 
-    public event EventHandler<string> Navigated;
-
-    public bool CanGoBack => _frame.CanGoBack;
-
     public NavigationService(IPageService pageService)
     {
         _pageService = pageService;
     }
+
+    public event EventHandler<string> Navigated;
+
+    public bool CanGoBack => _frame.CanGoBack;
 
     public void Initialize(Frame shellFrame)
     {
@@ -42,10 +42,7 @@ public class NavigationService : INavigationService
         {
             var vmBeforeNavigation = _frame.GetDataContext();
             _frame.GoBack();
-            if (vmBeforeNavigation is INavigationAware navigationAware)
-            {
-                navigationAware.OnNavigatedFrom();
-            }
+            if (vmBeforeNavigation is INavigationAware navigationAware) navigationAware.OnNavigatedFrom();
         }
     }
 
@@ -62,10 +59,7 @@ public class NavigationService : INavigationService
             {
                 _lastParameterUsed = parameter;
                 var dataContext = _frame.GetDataContext();
-                if (dataContext is INavigationAware navigationAware)
-                {
-                    navigationAware.OnNavigatedFrom();
-                }
+                if (dataContext is INavigationAware navigationAware) navigationAware.OnNavigatedFrom();
             }
 
             return navigated;
@@ -75,23 +69,19 @@ public class NavigationService : INavigationService
     }
 
     public void CleanNavigation()
-        => _frame.CleanNavigation();
+    {
+        _frame.CleanNavigation();
+    }
 
     private void OnNavigated(object sender, NavigationEventArgs e)
     {
         if (sender is Frame frame)
         {
-            bool clearNavigation = (bool)frame.Tag;
-            if (clearNavigation)
-            {
-                frame.CleanNavigation();
-            }
+            var clearNavigation = (bool)frame.Tag;
+            if (clearNavigation) frame.CleanNavigation();
 
             var dataContext = frame.GetDataContext();
-            if (dataContext is INavigationAware navigationAware)
-            {
-                navigationAware.OnNavigatedTo(e.ExtraData);
-            }
+            if (dataContext is INavigationAware navigationAware) navigationAware.OnNavigatedTo(e.ExtraData);
 
             Navigated?.Invoke(sender, dataContext.GetType().FullName);
         }

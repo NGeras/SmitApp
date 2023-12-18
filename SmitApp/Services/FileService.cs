@@ -1,11 +1,9 @@
 ﻿using System.IO;
 using System.Text;
-
 using Newtonsoft.Json;
+using SmitApp.Contracts.Services;
 
-using SmitApp.Core.Contracts.Services;
-
-namespace SmitApp.Core.Services;
+namespace SmitApp.Services;
 
 public class FileService : IFileService
 {

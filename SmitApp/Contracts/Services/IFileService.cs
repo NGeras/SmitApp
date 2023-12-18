@@ -1,4 +1,4 @@
-﻿namespace SmitApp.Core.Contracts.Services;
+﻿namespace SmitApp.Contracts.Services;
 
 public interface IFileService
 {

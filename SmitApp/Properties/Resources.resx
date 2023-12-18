@@ -7,7 +7,7 @@
 		    <value>Settings</value>
     </data>
     <data name="SettingsPageAboutText" xml:space="preserve">
-        <value>Settings page placeholder text.  Your app description goes here.</value>
+        <value>Settings page placeholder text.</value>
     </data>
     <data name="SettingsPageAboutTitle" xml:space="preserve">
         <value>About this application</value>
@@ -31,13 +31,13 @@
         <value>Default</value>
     </data>
     <data name="ShellListDetailsPage" xml:space="preserve">
-		    <value>ListDetails</value>
+		    <value>Movies list</value>
     </data>
     <data name="ListDetailsPageTitle" xml:space="preserve">
-		    <value>ListDetails</value>
+		    <value>Movies list</value>
     </data>
     <data name="ListDetailsListDescription" xml:space="preserve">
-		    <value>Sample Orders</value>
+		    <value>Movies</value>
     </data>
     <data name="ShellGoBackButton" xml:space="preserve">
         <value>Go back</value>
