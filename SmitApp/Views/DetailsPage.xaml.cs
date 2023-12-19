@@ -4,7 +4,7 @@ using SmitApp.ViewModels;
 namespace SmitApp.Views;
 
 /// <summary>
-///     Interaction logic for Page1.xaml
+///     Interaction logic for DetailsPage.xaml
 /// </summary>
 public partial class DetailsPage : Page
 {

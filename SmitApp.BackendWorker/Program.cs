@@ -12,8 +12,8 @@ namespace SmitApp.BackendWorker
             IHost host = Host.CreateDefaultBuilder(args)
                 .ConfigureServices(services =>
                 {
-                    services.AddTransient<IMovieRepository, MovieRepository>();
-                    services.AddTransient<ICategoryRepository, CategoryRepository>();
+                    services.AddScoped<IMovieRepository, MovieRepository>();
+                    services.AddScoped<ICategoryRepository, CategoryRepository>();
                     services.AddTransient<IMovieService, MovieService>();
                     services.AddTransient<ICategoryService, CategoryService>();
                     services.AddHostedService<Worker>();

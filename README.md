@@ -1,5 +1,5 @@
-
-﻿# Movie Database Application
+﻿
+## Movie Database Application
 
 This is a movie database application that includes a front-end built with WPF using the MVVM pattern and a back-end implemented as a Windows service. Communication between the front-end and back-end is achieved through RabbitMQ.
 
@@ -28,12 +28,12 @@ The project is structured into front-end and back-end components:
 
 - **Models:** Defines data models for movies and categories for front-end and back-end.
 
-### Back-end (Windows Service)
+### Back-end (Windows Service .NET Framework 4.8)
 
 - **Program.cs:** Entry point for the Windows service.
 - **SmitService.cs:** Background service responsible for handling RabbitMQ message consumers using MovieService and CategoryService.
 
-### Back-end (Worker Service)
+### Back-end (Worker Service .NET 6)
 
 - **Program.cs:** Entry point for the Windows service.
 - **Worker.cs:** Background service responsible for handling RabbitMQ message consumers using MovieService and CategoryService.
